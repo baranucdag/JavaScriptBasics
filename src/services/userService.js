@@ -1,14 +1,19 @@
 export default class UserService{
     
-    add(){
-        console.log("user added")
+    constructor(loggerService){
+        this.users = []
+        this.loggerService = loggerService
     }
-
-    delete(){
-        console.log("user deleted")
+    add(user){
+        this.users.push(user)
+        this.loggerService.log(user)
     }
 
     list(){
-        console.log("user listed")
+        return this.users
+    }
+
+    getById(id){
+        this.users.find(x=>x.id==id)
     }
 }
